@@ -23,8 +23,6 @@
         <module>daily-study-service</module>
         <module>daily-study-web</module>
         <module>daily-study-storage</module>
-
-
     </modules>
 
     <dependencies>
