@@ -12,13 +12,18 @@
     <artifactId>daily-study-web</artifactId>
 
 
-
-
     <dependencies>
         <dependency>
             <groupId>com.ws</groupId>
             <artifactId>daily-study-service</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 接口API生成 https://japidocs.agilestudio.cn/#/zh-cn/ -->
+        <dependency>
+            <groupId>io.github.yedaxia</groupId>
+            <artifactId>japidocs</artifactId>
+            <version>1.4.3</version>
         </dependency>
     </dependencies>
 

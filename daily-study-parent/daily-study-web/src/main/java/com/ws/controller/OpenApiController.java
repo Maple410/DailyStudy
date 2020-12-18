@@ -9,7 +9,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("/open/api")
 public class OpenApiController {
 
-
-
-
 }
