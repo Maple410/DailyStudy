@@ -58,4 +58,9 @@ public class ExcelServiceImpl implements IExcelService {
         List<UserInfoImport> infoList = ImportUtil.readExcel("", UserInfoImport.class, file);
         return infoList;
     }
+
+    @Override
+    public List<List<String>> importExcelList(MultipartFile file) {
+        return ImportUtil.importExcel(file);
+    }
 }

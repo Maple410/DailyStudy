@@ -40,4 +40,9 @@ public class ExcelController {
     public List<UserInfoImport> importExcel(@RequestParam("file") MultipartFile file) {
         return excelService.importExcel(file);
     }
+
+    @PostMapping("/importList")
+    public List<List<String>> importExcelList(@RequestParam("file") MultipartFile file) {
+        return excelService.importExcelList(file);
+    }
 }

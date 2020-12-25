@@ -12,7 +12,9 @@ import java.util.List;
  */
 public interface IExcelService {
 
-    void exportExcel(HttpServletResponse response)throws Exception;
+    void exportExcel(HttpServletResponse response) throws Exception;
 
     List<UserInfoImport> importExcel(MultipartFile file);
+
+    List<List<String>> importExcelList(MultipartFile file);
 }

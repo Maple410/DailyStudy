@@ -244,7 +244,7 @@ public class ImportUtil {
                                     tempList.add(row.getCell(t).getStringCellValue());
                                     break;
                                 case NUMERIC:
-                                    tempList.add(String.valueOf(row.getCell(t).getNumericCellValue()));
+                                    tempList.add(Integer.valueOf(Double.valueOf(row.getCell(t).getNumericCellValue()).intValue()).toString());
                                     break;
                                 case BLANK:
                                     tempList.add("");
