@@ -1,6 +1,7 @@
 package com.ws.controller;
 
 import com.ws.domains.AjaxResult;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,10 +23,12 @@ public class IndexController {
 
     /**
      * 测试demo
+     *
      * @param demo
      * @return
      */
     @GetMapping("/demo")
+    @ApiOperation(value = "测试接口", notes = "路径/demo")
     public AjaxResult index(@RequestParam String demo) {
         return new AjaxResult(demo).success();
     }

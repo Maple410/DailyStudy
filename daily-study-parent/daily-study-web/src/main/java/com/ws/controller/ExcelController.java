@@ -2,6 +2,7 @@ package com.ws.controller;
 
 import com.ws.excel.importor.vo.UserInfoImport;
 import com.ws.excel.service.IExcelService;
+import io.swagger.annotations.ApiOperation;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class ExcelController {
 
     @Ignore
     @GetMapping("/export")
+    @ApiOperation(value = "Excel 导出接口",notes = "Excel 导出/export")
     public void exportExcel(HttpServletResponse response) {
         try {
             excelService.exportExcel(response);
@@ -37,11 +39,13 @@ public class ExcelController {
 
 
     @PostMapping("/import")
+    @ApiOperation(value = "Excel导入接口")
     public List<UserInfoImport> importExcel(@RequestParam("file") MultipartFile file) {
         return excelService.importExcel(file);
     }
 
     @PostMapping("/importList")
+    @ApiOperation(value = "Excel List导入接口")
     public List<List<String>> importExcelList(@RequestParam("file") MultipartFile file) {
         return excelService.importExcelList(file);
     }
