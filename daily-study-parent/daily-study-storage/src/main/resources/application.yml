@@ -1,5 +1,5 @@
 server:
-  port: 2525
+  port: 8080
 
 # 该配置的名称是固定的，不可以改变，否则将不能自动加载到数据源中
 spring:
@@ -23,3 +23,17 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: ID_WORKER
+      field-strategy: NOT_EMPTY
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.ws.service.entity
