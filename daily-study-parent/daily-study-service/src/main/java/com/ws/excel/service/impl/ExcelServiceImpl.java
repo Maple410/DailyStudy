@@ -7,13 +7,16 @@ import com.ws.excel.exportor.vo.UserInfoExport;
 import com.ws.excel.importor.ImportUtil;
 import com.ws.excel.importor.vo.UserInfoImport;
 import com.ws.excel.service.IExcelService;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,7 +31,7 @@ public class ExcelServiceImpl implements IExcelService {
         String fileName = "测试.xls";
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-data");
-        //前端 再对文件名进行URLDecoder 解码
+        //前端 再对文件名进行URLDecoder 解码 https://www.cnblogs.com/DidiLiu/p/13741884.html
         response.setHeader("Content-disposition", "attachment; filename=\"" + java.net.URLEncoder.encode(fileName, "UTF-8") + "\"");
         // 定义输出类型
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
@@ -61,6 +64,11 @@ public class ExcelServiceImpl implements IExcelService {
 
     @Override
     public List<List<String>> importExcelList(MultipartFile file) {
+
+        //Excel导入的时候日期格式会变成double式的String数据处理
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = HSSFDateUtil.getJavaDate(Double.parseDouble("43052.0"));
+        String time = sdf.format(date);
         return ImportUtil.importExcel(file);
     }
 }
