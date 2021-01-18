@@ -1,0 +1,111 @@
+import Util;
+import Console;
+
+type @yzfHost = string
+type @yzfAppId=string
+type @yzfQueryRequest = QueryRequest
+type @yzfCheckConfig = CheckConfig
+type @runtime = RuntimeOptions
+
+model RuntimeOptions{
+	timeout:string
+}
+
+model CommonResponse{
+	code:double,
+	success:boolean,
+	msg:string,
+	result:[map[string]string]
+}
+
+model QueryRequest{
+	pageSize:integer,
+	pageIndex:integer,
+	orders:[OrderField],
+	conditions:[Condition]
+
+}
+
+model OrderField{
+	column:string,
+	acs:boolean
+}
+
+ model Condition{
+ 	field:string,
+ 	value:string,
+ 	secondValue:string,
+ 	array:[string],
+ 	operator:string
+ }
+
+
+model CheckConfig{
+	clientId:string,
+	sign:string,
+	timestamp:string
+}
+
+init(){
+
+	var orderField = new OrderField{
+		column = 'createTime',
+		acs = false
+	};
+
+	var condition = new Condition{
+		field = '_id',
+		operator = 'NE',
+		value = '1'
+	};
+
+	var body = new QueryRequest{
+		pageSize = 10,
+		pageIndex = 1,
+		orders = [orderField],
+		conditions = [condition]
+	};
+
+	var checkConfig = new CheckConfig{
+		clientId = '******',
+		sign = 'd23d8fbb5e04b23fc050a45c1869f637',
+		timestamp = '1610594354190'
+	};
+
+	var runtime = new RuntimeOptions{
+		timeout = '1000'
+	};
+
+
+	@yzfHost='********';
+	@yzfAppId='**********';
+	@yzfCheckConfig = checkConfig;
+	@yzfQueryRequest = body;
+	@runtime = runtime;
+}
+
+api list(module:string,runtime:RuntimeOptions,queryRequest:QueryRequest):CommonResponse{
+	__request.method ='POST';
+	__request.pathname= `/openapi/module/${module}/list`;
+	__request.headers = {
+		host = @yzfHost,
+		app-id = @yzfAppId,
+		content-type = 'application/json'
+	};
+	__request.query= Util.stringifyMapValue(@yzfCheckConfig);
+  	__request.body = Util.toJSONString(queryRequest);
+}returns {
+  // 描述返回相关信息
+  if (!Util.equalNumber(__response.statusCode, 200)) {
+    throw {
+      message = `Reqeust Failed!`,
+      code = `${__response.statusCode}`
+    };
+  }
+  var result = Util.assertAsMap(Util.readAsJSON(__response.body));
+  
+  return result;
+} runtime {
+   timeout = 60000
+}
+
