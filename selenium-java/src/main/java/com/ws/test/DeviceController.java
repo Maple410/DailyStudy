@@ -36,18 +36,18 @@ public class DeviceController {
         WebDriver driver = new ChromeDriver();
         //窗口最大化
         driver.manage().window().maximize();
-        driver.get("*");
+        driver.get("http://devicelog.yunzhangfang.com/deviceManage/device");
 
         //设置Cookie
-        Cookie c1 = new Cookie("tgw_l7_route", "319ddec0229ecbb3a15f8e8e17540453");
-        Cookie c2 = new Cookie("access_token", "eyJhbGciOiJIUzI1NiJ9.eyJzZXQiOiIiLCJwaG9uZSI6IjEzOTEzODM1NzgwIiwiZ3NJZCI6ImRlZmF1bHQiLCJpc3MiOiJhdXRoMCIsInVzZXJOYW1lIjoic0tpU2RES3NFdmxURDFFRjdoUTFkNVFpRWlFIiwiZXhwIjoxNjE0MTYwODEyLCJ1c2VySWQiOiI1ODIxNTQwODUifQ.oEZ6cCX_VBqXhGboSRXrw2JWGQaohz9BOZjmRwitzGo");
-        Cookie c3 = new Cookie("refresh_token", "3129540eac0c424699666f08f9aee4d4");
+        Cookie c1 = new Cookie("tgw_l7_route", "ecb25e2a7d1f3b505b22fa7afefaf3dc");
+        Cookie c2 = new Cookie("access_token", "eyJhbGciOiJIUzI1NiJ9.eyJzZXQiOiIiLCJwaG9uZSI6IjEzOTEzODM1NzgwIiwiZ3NJZCI6ImRlZmF1bHQiLCJpc3MiOiJhdXRoMCIsInVzZXJOYW1lIjoic0tpU2RES3NFdmxURDFFRjdoUTFkNVFpRWlFIiwiZXhwIjoxNjE0MzA5MjA5LCJ1c2VySWQiOiI1ODIxNTQwODUifQ.2vKWAgYBvlVHTWyZqrgMz7F-s8J1koiCfu-d4sX0Iy8");
+        Cookie c3 = new Cookie("refresh_token", "9f5d5e5de2234c298817c2cb4667317e");
         driver.manage().addCookie(c1);
         driver.manage().addCookie(c2);
         driver.manage().addCookie(c3);
 
         //针对钉钉扫码登录的 二次刷新
-        driver.get("*");
+        driver.get("http://devicelog.yunzhangfang.com/deviceManage/device");
         driver.navigate().refresh();
 
 

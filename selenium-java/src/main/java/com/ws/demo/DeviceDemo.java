@@ -21,8 +21,8 @@ public class DeviceDemo {
         WebDriver driver = new ChromeDriver();
         //窗口最大化
         driver.manage().window().maximize();
-        driver.get("*");
-        Thread.sleep(500);
+        driver.get("http://devicelog.yunzhangfang.com/deviceManage/device");
+        //Thread.sleep(1000);
 
         //设置Cookie
         Cookie c1 = new Cookie("tgw_l7_route", "319ddec0229ecbb3a15f8e8e17540453");
@@ -31,9 +31,8 @@ public class DeviceDemo {
         driver.manage().addCookie(c1);
         driver.manage().addCookie(c2);
         driver.manage().addCookie(c3);
-
         //针对钉钉扫码登录的 二次刷新
-        driver.get("*");
+        driver.get("http://devicelog.yunzhangfang.com/deviceManage/device");
         driver.navigate().refresh();
 
         //通过ID 对输入框进行赋值
