@@ -61,5 +61,11 @@ public class TestLambda {
             System.out.println(k + ": " + v);
         });
 
+        //5 取其中一个属性构成list
+        List<String> nameList = infoList.stream().map(item -> item.getName()).collect(Collectors.toList());
+        nameList.forEach(item -> {
+            System.out.println(item);
+        });
+
     }
 }
