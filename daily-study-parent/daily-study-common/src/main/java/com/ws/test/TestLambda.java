@@ -54,5 +54,12 @@ public class TestLambda {
             System.out.println(item.toString());
         });
 
+        //4.属性-实体对应
+        System.out.println("-------------属性实体对应-----------------");
+        Map<String, UserInfoExport> userMap = infoList.stream().collect(Collectors.toMap(UserInfoExport::getName, item -> item));
+        userMap.forEach((k, v) -> {
+            System.out.println(k + ": " + v);
+        });
+
     }
 }

@@ -1,0 +1,29 @@
+{
+  "scope": "com.yzf.openapi",
+  "name": "index",
+  "version": "1.0.0",
+  "main": "./index.dara",
+  "libraries": {
+    "Console": "darabonba:Console:*",
+    "Util": "darabonba:Util:*"
+  },
+  "java": {
+    "package": "com.yzf.openapi",
+    "className": "OpenApiClient",
+    "packageInfo": {
+      "description": "Alibaba Cloud SDK for Java",
+      "url": "https://github.com/aliyun/alibabacloud-sdk",
+      "licenseName": "The Apache License, Version 2.0",
+      "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+      "developerId": "aliyunproducts",
+      "developerName": "Aliyun SDK",
+      "developerEmail": "aliyunsdk@aliyun.com",
+      "groupId": "com.yzf.openapi",
+      "artifactId": "YzfApi",
+      "version": "1.0.0"
+    }
+  },
+  "releases": {
+    "java": "com.aliyun:sdk:2.0.6"
+  }
+}

@@ -14,6 +14,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @Author: wangshuo
  * @Date: 2020/12/29 16:58
  * 接入Swagger2，用于生成API接口文档，API文档请求地址：http://localhost:8080/swagger-ui.html
+ *
+ * https://zhuanlan.zhihu.com/p/104311066
  */
 @Configuration
 @EnableSwagger2
