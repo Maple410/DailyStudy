@@ -1,5 +1,7 @@
 package com.ws.test;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,6 +30,11 @@ public class TestAll {
 
         System.out.println(allList);*/
 
+        System.out.println("A"+ "\n" + "B");
+        //String s =  "\n";
+        String s =  " ";
+        System.out.println(StringUtils.isBlank(s));
+        System.out.println(StringUtils.isEmpty(s));
 
     }
 }

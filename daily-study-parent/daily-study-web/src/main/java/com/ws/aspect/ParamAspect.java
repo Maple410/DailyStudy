@@ -1,4 +1,4 @@
-package com.ws.config.aop;
+package com.ws.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import java.util.Objects;
 @Component
 @Aspect
 @Slf4j
-public class ParamAop {
+public class ParamAspect {
 
     @Around("execution(* com.ws.controller..*.*(..))")
     public Object around(ProceedingJoinPoint point) throws Throwable {
