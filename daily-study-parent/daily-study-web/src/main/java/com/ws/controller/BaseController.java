@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -59,7 +60,7 @@ public class BaseController<T extends IService, E> {
 
     @PostMapping("/page")
     @ApiOperation(value = "分页查询")
-    public AjaxResult page(@RequestBody BasePageQuery basePageQuery) {
+    public AjaxResult<PageResult<E>> page(@RequestBody BasePageQuery basePageQuery) {
 
         QueryWrapper<E> queryWrapper = new QueryWrapper<>();
         constructQueryParam(basePageQuery, queryWrapper);
@@ -70,7 +71,7 @@ public class BaseController<T extends IService, E> {
 
     @PostMapping("/list")
     @ApiOperation(value = "列表")
-    public AjaxResult list(@RequestBody BasePageQuery basePageQuery) {
+    public AjaxResult<List<E>> list(@RequestBody BasePageQuery basePageQuery) {
         QueryWrapper<E> queryWrapper = new QueryWrapper<>();
         constructQueryParam(basePageQuery, queryWrapper);
         return new AjaxResult(baseService.list(queryWrapper)).success();
