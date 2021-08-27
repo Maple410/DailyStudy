@@ -8,4 +8,6 @@ import com.ws.service.entity.Company;
  * @Date: 2021/1/4 14:23
  */
 public interface ICompanyService extends IService<Company> {
+
+    void addCompany(Company company);
 }
