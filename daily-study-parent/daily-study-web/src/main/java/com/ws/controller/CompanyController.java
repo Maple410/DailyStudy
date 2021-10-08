@@ -7,6 +7,8 @@ import com.ws.service.entity.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: wangshuo
  * @Date: 2021/1/4 14:27
@@ -29,5 +31,10 @@ public class CompanyController {
     public AjaxResult addCompany(@RequestBody Company company) {
         companyService.save(company);
         return new AjaxResult().success();
+    }
+
+    @PostMapping("/update")
+    public AjaxResult<List<String>> updateCompany(@RequestBody Company company) throws Exception {
+        return new AjaxResult<>(companyService.updateCompany(company)).success();
     }
 }

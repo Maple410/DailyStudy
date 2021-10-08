@@ -5,8 +5,11 @@ import com.google.common.eventbus.AsyncEventBus;
 import com.ws.general.service.ICompanyService;
 import com.ws.service.entity.Company;
 import com.ws.service.mapper.CompanyMapper;
+import com.ws.test.TestCompare;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author: wangshuo
@@ -23,5 +26,12 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
 
         asyncEventBus.post(company.getName());
 
+    }
+
+    @Override
+    public List<String> updateCompany(Company company) throws Exception {
+        Company historyObject = this.getById(company.getId());
+        this.updateById(company);
+        return TestCompare.compareDifference(historyObject, company);
     }
 }
