@@ -3,6 +3,8 @@ package com.ws.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ws.domains.AjaxResult;
 import com.ws.general.service.ICompanyService;
+import com.ws.log.record.OperationConstant;
+import com.ws.log.record.OperationLog;
 import com.ws.service.entity.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,7 @@ public class CompanyController {
     }
 
     @PostMapping("/add")
+    @OperationLog(message = "公司信息：#{#company.name}", operation = OperationConstant.ADD)
     public AjaxResult addCompany(@RequestBody Company company) {
         companyService.save(company);
         return new AjaxResult().success();
