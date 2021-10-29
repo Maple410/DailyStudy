@@ -5,6 +5,7 @@ import com.ws.domains.AjaxResult;
 import com.ws.general.service.ICompanyService;
 import com.ws.log.record.OperationConstant;
 import com.ws.log.record.OperationLog;
+import com.ws.operation.log.ChangeVo;
 import com.ws.service.entity.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class CompanyController {
     }
 
     @PostMapping("/update")
-    public AjaxResult<List<String>> updateCompany(@RequestBody Company company) throws Exception {
+    public AjaxResult<List<ChangeVo>> updateCompany(@RequestBody Company company) throws Exception {
         return new AjaxResult<>(companyService.updateCompany(company)).success();
     }
 }

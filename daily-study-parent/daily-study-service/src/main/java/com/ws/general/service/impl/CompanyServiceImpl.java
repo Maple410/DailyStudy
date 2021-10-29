@@ -3,6 +3,8 @@ package com.ws.general.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.eventbus.AsyncEventBus;
 import com.ws.general.service.ICompanyService;
+import com.ws.operation.log.ChangeVo;
+import com.ws.operation.log.OperationUtil;
 import com.ws.service.entity.Company;
 import com.ws.service.mapper.CompanyMapper;
 import com.ws.test.TestCompare;
@@ -29,9 +31,9 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
     }
 
     @Override
-    public List<String> updateCompany(Company company) throws Exception {
+    public List<ChangeVo> updateCompany(Company company) throws Exception {
         Company historyObject = this.getById(company.getId());
         this.updateById(company);
-        return TestCompare.compareDifference(historyObject, company);
+        return OperationUtil.compareDifference(historyObject, company);
     }
 }

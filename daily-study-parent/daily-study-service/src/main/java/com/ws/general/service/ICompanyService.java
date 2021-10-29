@@ -1,6 +1,7 @@
 package com.ws.general.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ws.operation.log.ChangeVo;
 import com.ws.service.entity.Company;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface ICompanyService extends IService<Company> {
     void addCompany(Company company);
 
 
-    List<String> updateCompany(Company company) throws Exception;
+    List<ChangeVo> updateCompany(Company company) throws Exception;
 }
