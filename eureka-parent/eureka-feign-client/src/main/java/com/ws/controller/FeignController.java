@@ -19,7 +19,12 @@ public class FeignController {
     private FeignService feignService;
 
     @GetMapping("/list")
-    public String get(@RequestParam(defaultValue = "sjj",required = false)String name){
+    public String get(@RequestParam(defaultValue = "sjj", required = false) String name) {
         return feignService.get(name);
+    }
+
+    @GetMapping("listPage")
+    public Object list(@RequestParam String weekDate, @RequestParam(required = false) String userId) {
+        return feignService.list(weekDate, userId);
     }
 }

@@ -9,4 +9,6 @@ public interface IEasyExcelService {
     void exportDynamic(HttpServletResponse response);
 
     void exportComplex(HttpServletResponse response);
+
+    void exportMultiSheetTemplate(HttpServletResponse response) throws Exception;
 }

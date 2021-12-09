@@ -39,4 +39,11 @@ public class EasyExcelController {
         easyExcelService.exportComplex(response);
     }
 
+
+    @PostMapping("/exportMultiSheetTemplate")
+    @ApiOperation(value = "easyExcel-多sheet模板导出")
+    public void exportMultiSheetTemplate(HttpServletResponse response) throws Exception {
+        easyExcelService.exportMultiSheetTemplate(response);
+    }
+
 }

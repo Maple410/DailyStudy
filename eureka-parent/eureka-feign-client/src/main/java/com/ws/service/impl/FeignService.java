@@ -14,7 +14,11 @@ public class FeignService {
     @Autowired
     EurekaClientFeign eurekaClientFeign;
 
-    public String get(String name){
+    public String get(String name) {
         return eurekaClientFeign.getMessageFromClient(name);
+    }
+
+    public Object list(String weekDate, String userId) {
+        return eurekaClientFeign.page(weekDate, userId);
     }
 }

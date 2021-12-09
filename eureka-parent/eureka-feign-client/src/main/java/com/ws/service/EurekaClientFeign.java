@@ -15,4 +15,7 @@ public interface EurekaClientFeign {
 
     @GetMapping("/list")    //客户端的方法地址
     String getMessageFromClient(@RequestParam(value = "name")String name);
+
+    @GetMapping("/api/workHour/query/list")
+    Object page(@RequestParam String weekDate, @RequestParam(required = false) String userId);
 }
