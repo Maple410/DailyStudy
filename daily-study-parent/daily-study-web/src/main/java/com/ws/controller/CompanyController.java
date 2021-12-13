@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/company")
-public class CompanyController {
+public class CompanyController<T extends String> {
 
 
     @Autowired

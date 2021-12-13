@@ -15,7 +15,7 @@ import java.util.Date;
 
 @Data
 @TableName("company")
-public class Company {
+public class Company<T> {
 
     private Integer id;
 
@@ -27,9 +27,22 @@ public class Company {
 
     private String shareholder;
 
-    @Remarks(name = "变更创建时间",dateTimeFlag = true)
+    @Remarks(name = "变更创建时间", dateTimeFlag = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
+    private T request;
+
+    public Company(Integer id, String address, String name, String shareholder, Date createTime, T request) {
+        this.id = id;
+        this.address = address;
+        this.name = name;
+        this.shareholder = shareholder;
+        this.createTime = createTime;
+        this.request = request;
+    }
+
+    public Company() {
+    }
 }

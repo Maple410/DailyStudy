@@ -11,6 +11,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  * @Date: 2021/8/12 14:12
  *
  * https://blog.csdn.net/qq_38345296/article/details/100539989
+ *
+ * https://www.appblog.cn/2021/01/24/Spring%20Boot%E9%9B%86%E6%88%90EventBus%EF%BC%88Guava%E6%96%B9%E5%BC%8F%EF%BC%89/
  */
 @Configuration
 public class EventBusConfigBean {
