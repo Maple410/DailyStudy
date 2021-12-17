@@ -2,7 +2,6 @@ package com.ws.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @Author: wangshuo
@@ -35,7 +34,14 @@ public class Algorithm_1 {
     }
 
 
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    /**
+     * 解法1-暴力解法
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode addTwoNumbers_1(ListNode l1, ListNode l2) {
 
         List<Integer> num1List = new ArrayList<>();
         List<Integer> num2List = new ArrayList<>();
@@ -63,10 +69,10 @@ public class Algorithm_1 {
             }
             shortArr = num2List.toArray();
         } else {
-            for (int i = 0; i < num1List.size(); i++) {
-                resultArr[i] = num1List.get(i);
+            for (int i = 0; i < num2List.size(); i++) {
+                resultArr[i] = num2List.get(i);
             }
-            shortArr = num2List.toArray();
+            shortArr = num1List.toArray();
         }
 
         for (int i = 0; i < minSize; i++) {
@@ -76,6 +82,13 @@ public class Algorithm_1 {
                 resultArr[i + 1] = resultArr[i + 1] + 1;
             } else {
                 resultArr[i] = tempNum;
+            }
+        }
+
+        for (int i = 0; i < resultArr.length; i++) {
+            if (resultArr[i] - 10 == 0) {
+                resultArr[i] = 0;
+                resultArr[i + 1] = resultArr[i + 1] + 1;
             }
         }
 
@@ -99,19 +112,88 @@ public class Algorithm_1 {
         return resultNode;
     }
 
+    /**
+     * 解法2- 未解决问题
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode addTwoNumbers_2(ListNode l1, ListNode l2) {
+        ListNode resultNode = new ListNode(0);
+        ListNode nextNode = null;
+        nextNode = resultNode;
+
+        while (true) {
+            if (l1 == null && l2 == null) {
+                break;
+            }
+            ListNode node = new ListNode(0);
+            nextNode.val = (l1 != null ? l1.val : 0) + (l2 != null ? l2.val : 0) + nextNode.val;
+            l1 = l1 != null ? l1.next : null;
+            l2 = l2 != null ? l2.next : null;
+            if (nextNode.val >= 10) {
+                nextNode.val = nextNode.val - 10;
+                node = new ListNode(1);
+            }
+            nextNode.next = node;
+            nextNode = nextNode.next;
+        }
+        return resultNode;
+
+    }
+
+    /**
+     * 解法3-网上解法
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode addTwoNumbers_3(ListNode l1, ListNode l2) {
+        ListNode root = new ListNode(0);
+        ListNode cursor = root;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            int l1Val = l1 != null ? l1.val : 0;
+            int l2Val = l2 != null ? l2.val : 0;
+            int sumVal = l1Val + l2Val + carry;
+            carry = sumVal / 10;
+
+            ListNode sumNode = new ListNode(sumVal % 10);
+            cursor.next = sumNode;
+            cursor = sumNode;
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+
+        return root.next;
+    }
+
 
     public static void main(String[] args) {
 
         ListNode l1 = new ListNode(0);
         ListNode l2 = new ListNode(4, l1);
-        ListNode l3 = new ListNode(9, l2);
+        ListNode l3 = new ListNode(2, l2);
 
 
-        ListNode l4 = new ListNode(1);
-        ListNode l5 = new ListNode(6, l4);
-        ListNode l6 = new ListNode(5, l5);
+        ListNode l4 = new ListNode(9, l3);
 
-        ListNode resultNode = addTwoNumbers(l3, l6);
+
+        ListNode l5 = new ListNode(0);
+        ListNode l6 = new ListNode(4, l5);
+        ListNode l7 = new ListNode(6, l6);
+        ListNode l8 = new ListNode(5, l7);
+
+
+        ListNode l9 = new ListNode(9, l8);
+        ListNode l10 = new ListNode(9, l9);
+        ListNode l11 = new ListNode(9, l10);
+
+        //ListNode resultNode = addTwoNumbers_1(l3, l8);
+        ListNode resultNode = addTwoNumbers_2(l1, l5);
 
         while (resultNode != null) {
             System.out.println(resultNode.val);
