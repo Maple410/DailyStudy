@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import java.util.concurrent.ThreadPoolExecutor;
+
 /**
  * @Author: wangshuo
  * @Date: 2021/8/12 14:12
@@ -29,7 +31,8 @@ public class EventBusConfigBean {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(5);
         executor.setMaxPoolSize(10);
-        executor.setQueueCapacity(50);
+        executor.setQueueCapacity(500);
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardOldestPolicy());
         return executor;
     }
 

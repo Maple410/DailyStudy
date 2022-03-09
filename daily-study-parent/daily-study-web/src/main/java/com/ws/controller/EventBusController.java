@@ -24,7 +24,9 @@ public class EventBusController {
 
     @GetMapping("/demo")
     public AjaxResult demo(@RequestParam String demo) {
-        asyncEventBus.post(demo);
+        for(int i=0;i<= 500;i++){
+            asyncEventBus.post(demo + ":" +i);
+        }
         return new AjaxResult().success();
     }
 }
