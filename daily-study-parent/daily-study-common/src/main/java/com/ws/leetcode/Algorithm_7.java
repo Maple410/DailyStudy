@@ -1,5 +1,7 @@
 package com.ws.leetcode;
 
+import java.util.Stack;
+
 /**
  * @Author: wangshuo
  * @Date: 2022/3/9 8:58
@@ -23,27 +25,30 @@ public class Algorithm_7 {
 
 
     public static void main(String[] args) {
-        String[] strArr = {"what is your","what is who is you","what is are you" };
+        String[] strArr = {"dog","racecar","car" };
         System.out.println(commonSubstring(strArr));
     }
 
 
-    public static String commonSubstring(String[] strArr) {
-
+    public static String commonSubstring(String[] strs) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0;; i++) {
-            char temp = strArr[0].charAt(i);
-            for (String str : strArr) {
-                if (str.length() < i + 1) {
+        for (int i = 0; ; i++) {
+            for (int j = 0; j < strs.length - 1; j++) {
+                if (strs[j].length() < i + 1) {
                     return sb.toString();
                 }
-                if (temp != str.charAt(i)) {
+                if (i + 1 == strs[j].length()) {
+                    return sb.toString();
+                }
+                if (strs[j].charAt(i) != strs[j + 1].charAt(i)) {
                     return sb.toString();
                 }
             }
-            sb.append(temp);
+            if (strs[0].length() == i) {
+                return sb.toString();
+            }
+            sb.append(strs[0].charAt(i));
         }
-
     }
 
 

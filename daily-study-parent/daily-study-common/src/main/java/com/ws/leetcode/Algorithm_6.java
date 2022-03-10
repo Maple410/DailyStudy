@@ -67,8 +67,8 @@ public class Algorithm_6 {
     }
 
 
-    public static int romeToInteger(String str) throws Exception {
-        if (StringUtils.isEmpty(str)) {
+    public static int romeToInteger(String s) throws Exception {
+        if(s ==null || s.length() ==0){
             return 0;
         }
         Map<Character, Integer> numMap = new HashMap<>();
@@ -79,7 +79,7 @@ public class Algorithm_6 {
         numMap.put('C', 100);
         numMap.put('D', 500);
         numMap.put('M', 1000);
-        char[] chars = str.toCharArray();
+        char[] chars = s.toCharArray();
         int preNum = numMap.get(chars[0]);
         int sum = preNum;
 
