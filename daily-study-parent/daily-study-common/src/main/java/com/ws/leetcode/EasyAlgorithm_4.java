@@ -21,7 +21,7 @@ import java.util.Stack;
  * 输出：""
  * 解释：输入不存在公共前缀。
  */
-public class Algorithm_7 {
+public class EasyAlgorithm_4 {
 
 
     public static void main(String[] args) {

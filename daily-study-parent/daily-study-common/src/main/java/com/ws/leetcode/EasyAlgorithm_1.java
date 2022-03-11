@@ -4,7 +4,7 @@ package com.ws.leetcode;
  * @Author: wangshuo
  * @Date: 2022/3/8 9:04
  *
- * LeetCode -1 两数之和
+ * LeetCode -1 两数之和 （已提交）
  * <p>
  * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
  * 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
@@ -20,7 +20,7 @@ package com.ws.leetcode;
  * 输入：nums = [3,3], target = 6
  * 输出：[0,1]
  */
-public class Algorithm_4 {
+public class EasyAlgorithm_1 {
 
 
     public static void main(String[] args) {

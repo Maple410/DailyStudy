@@ -1,17 +1,13 @@
 package com.ws.leetcode;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * @Author: wangshuo
  * @Date: 2022/3/9 8:56
  * <p>
- * LeetCode -13 罗马数字转整数
+ * LeetCode -13 罗马数字转整数 （已提交）
  * <p>
  * 罗马数字包含以下七种字符: I， V， X， L，C，D 和 M
  * 字符          数值
@@ -59,7 +55,7 @@ import java.util.Stack;
  * 输出: 1994
  * 解释: M = 1000, CM = 900, XC = 90, IV = 4.
  */
-public class Algorithm_6 {
+public class EasyAlgorithm_3 {
 
 
     public static void main(String[] args) throws Exception {

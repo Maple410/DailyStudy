@@ -4,7 +4,7 @@ package com.ws.leetcode;
  * @Author: wangshuo
  * @Date: 2022/3/8 9:05
  *
- * LeetCode-9 回文数
+ * LeetCode-9 回文数 （已提交）
  * <p>
  * <p>
  * 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
@@ -23,7 +23,7 @@ package com.ws.leetcode;
  * 输出：false
  * 解释：从右向左读, 为 01 。因此它不是一个回文数。
  */
-public class Algorithm_5 {
+public class EasyAlgorithm_2 {
 
 
     public static void main(String[] args) {
