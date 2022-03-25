@@ -7,7 +7,7 @@ import java.util.List;
  * @Author: wangshuo
  * @Date: 2021/12/24 11:06
  *
- * LeetCode=6 Z 字形变换
+
  * LeetCode -18 四数之和
  * 给你一个由 n 个整数组成的数组 nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组 [nums[a], nums[b], nums[c], nums[d]] （若两个四元组元素一一对应，则认为两个四元组重复）：
  * 0 <= a, b, c, d < n
