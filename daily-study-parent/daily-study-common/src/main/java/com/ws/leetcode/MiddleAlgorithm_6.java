@@ -36,7 +36,7 @@ package com.ws.leetcode;
  * 输入：s = "A", numRows = 1
  * 输出："A"
  */
-public class MiddleAlgorithm_4 {
+public class MiddleAlgorithm_6 {
 
     public static String convert(String s, int numRows) {
 

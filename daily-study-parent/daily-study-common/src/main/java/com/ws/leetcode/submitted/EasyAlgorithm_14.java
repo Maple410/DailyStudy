@@ -1,4 +1,4 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 import java.util.Stack;
 
@@ -6,7 +6,7 @@ import java.util.Stack;
  * @Author: wangshuo
  * @Date: 2022/3/9 8:58
  * <p>
- * LeetCode-14 最长公共前缀
+ * LeetCode-14 最长公共前缀（已提交）
  * <p>
  * 编写一个函数来查找字符串数组中的最长公共前缀。
  * <p>
@@ -21,7 +21,7 @@ import java.util.Stack;
  * 输出：""
  * 解释：输入不存在公共前缀。
  */
-public class EasyAlgorithm_4 {
+public class EasyAlgorithm_14 {
 
 
     public static void main(String[] args) {

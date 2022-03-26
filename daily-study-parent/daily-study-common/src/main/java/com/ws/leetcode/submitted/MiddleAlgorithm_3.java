@@ -1,4 +1,4 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * LeetCode-3 无重复字符的最长子串 （已提交）
  * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
  */
-public class MiddleAlgorithm_2 {
+public class MiddleAlgorithm_3 {
 
 
     /**

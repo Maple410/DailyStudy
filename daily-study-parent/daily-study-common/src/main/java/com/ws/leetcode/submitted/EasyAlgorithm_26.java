@@ -1,10 +1,10 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 /**
  * @Author: wangshuo
  * @Date: 2022/3/11 8:50
  * <p>
- * LeetCode-26 删除有序数组中的重复项
+ * LeetCode-26 删除有序数组中的重复项 （已提交）
  * <p>
  * 给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。
  * <p>
@@ -42,7 +42,7 @@ package com.ws.leetcode;
  * 输出：5, nums = [0,1,2,3,4]
  * 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
  */
-public class EasyAlgorithm_7 {
+public class EasyAlgorithm_26 {
 
 
     public static void main(String[] args) {

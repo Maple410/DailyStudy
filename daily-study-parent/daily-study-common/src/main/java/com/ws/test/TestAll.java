@@ -1,5 +1,6 @@
 package com.ws.test;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -10,10 +11,17 @@ import java.util.List;
  * @Author: wangshuo
  * @Date: 2021/6/30 14:25
  */
+@Slf4j
 public class TestAll {
 
 
     public static void main(String[] args) {
+
+        try {
+            System.out.println(5/0);
+        } catch (Exception e) {
+            log.error("除零异常",e);
+        }
 
       /*  List<Integer> allList = new ArrayList<>();
         allList.add(1);

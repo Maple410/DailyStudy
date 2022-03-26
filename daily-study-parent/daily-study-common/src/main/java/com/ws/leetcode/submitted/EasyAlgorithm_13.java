@@ -1,4 +1,4 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +55,7 @@ import java.util.Map;
  * 输出: 1994
  * 解释: M = 1000, CM = 900, XC = 90, IV = 4.
  */
-public class EasyAlgorithm_3 {
+public class EasyAlgorithm_13 {
 
 
     public static void main(String[] args) throws Exception {

@@ -1,4 +1,4 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 import java.util.Stack;
 
@@ -6,7 +6,7 @@ import java.util.Stack;
  * @Author: wangshuo
  * @Date: 2022/3/10 8:47
  * <p>
- * LeetCode-20 有效的括号
+ * LeetCode-20 有效的括号 （已提交）
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
  * <p>
  * 有效字符串需满足：
@@ -36,7 +36,7 @@ import java.util.Stack;
  * 输入：s = "{[]}"
  * 输出：true
  */
-public class EasyAlgorithm_5 {
+public class EasyAlgorithm_20 {
 
 
     public static void main(String[] args) {
