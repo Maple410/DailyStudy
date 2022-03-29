@@ -36,8 +36,8 @@ public class EasyAlgorithm_28 {
 
     public static void main(String[] args) {
 
-        String haystack = "sdf saf erf sdf s";
-        String needle = " ";
+        String haystack = "mississippi";
+        String needle = "issip";
         System.out.println(strIn(haystack, needle));
     }
 
@@ -60,6 +60,9 @@ public class EasyAlgorithm_28 {
                 }
                 compareIndex++;
             } else {
+                if(compareIndex>0){
+                    i = i-compareIndex;
+                }
                 compareIndex = 0;
                 index = -1;
             }
