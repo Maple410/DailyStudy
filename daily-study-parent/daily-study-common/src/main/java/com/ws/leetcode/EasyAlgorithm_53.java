@@ -27,16 +27,20 @@ package com.ws.leetcode;
 public class EasyAlgorithm_53 {
 
 
+    public static void main(String[] args) {
+        int[] nums = {5,4,-1,7,8};
+
+        System.out.println(maxSubArrSum(nums));
+    }
+
     public static int maxSubArrSum(int[] nums) {
         int max = nums[0];
-
+        int tempMax = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (nums[i] + max > max) {
-                max += nums[i];
-            }
+            max = max < 0 ? nums[i] : nums[i] + max;
+            tempMax = max > tempMax ? max : tempMax;
         }
-
-        return max;
+        return tempMax;
 
     }
 
