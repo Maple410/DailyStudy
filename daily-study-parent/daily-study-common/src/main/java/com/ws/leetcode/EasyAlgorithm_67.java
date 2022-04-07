@@ -19,10 +19,6 @@ package com.ws.leetcode;
  * 输入: a = "1010", b = "1011"
  * 输出: "10101"
  *
- * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/add-binary
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- *
  */
 public class EasyAlgorithm_67 {
 

@@ -1,4 +1,4 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 /**
  * @Author: wangshuo
@@ -26,4 +26,18 @@ package com.ws.leetcode;
  *
  */
 public class EasyAlgorithm_58 {
+
+
+    public static void main(String[] args) {
+        String s = "luffy is still joyboy";
+        System.out.println(lastWordLength(s));
+    }
+
+    public static int lastWordLength(String  s){
+
+        String[] str = s.split(" ");
+        return str[str.length-1].length();
+
+    }
+
 }
