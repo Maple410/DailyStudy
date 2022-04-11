@@ -46,7 +46,7 @@ public class MiddleAlgorithm_6 {
             return s;
         }
         int el = length % elementCount;
-        int weight = (length / elementCount) * (numRows - 1) + (el <= numRows-1 ? 1 : el - numRows + 1);
+        int weight = (length / elementCount) * (numRows - 1) + (el <= numRows - 1 ? 1 : el - numRows + 1);
 
         char[][] chars = new char[numRows][weight];
 
@@ -81,7 +81,47 @@ public class MiddleAlgorithm_6 {
         return stringBuilder.toString();
     }
 
+    public static String convertToZ(String s, int numRows) {
+
+        char[] charArray = s.toCharArray();
+        int elementCount = numRows * 2 - 2;
+
+        int length = s.length();
+        int el = length % elementCount;
+        int weight = (length / elementCount) * (numRows - 1) + (el <= numRows - 1 ? 1 : el - numRows + 1);
+
+        char[][] chars = new char[numRows][weight];
+        for (int i = 0; i < length; i++) {
+            int row = 0;
+            int column = 0;
+            int index = i % elementCount;
+            if (index < numRows) {
+                row = index;
+            } else {
+                row = elementCount - index;
+            }
+
+            int allIndex = i/elementCount;
+            if(index/numRows <1){
+                column = index/numRows + allIndex *(numRows-1);
+            }else{
+                column = index/numRows + index%numRows + allIndex *(numRows-1);
+            }
+            chars[row][column] = charArray[i];
+        }
+
+        StringBuilder stringBuilder = new StringBuilder("");
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < weight; j++) {
+                stringBuilder.append(chars[i][j]);
+            }
+        }
+        return stringBuilder.toString();
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(convert("PAYPALISHIRING",3));
+        //System.out.println(convert("PAYPALISHIRING", 3));
+        System.out.println(convertToZ("PAYPALISHIRING", 3));
     }
 }

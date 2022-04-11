@@ -44,5 +44,10 @@ public class TestAll {
         System.out.println(StringUtils.isBlank(s));
         System.out.println(StringUtils.isEmpty(s));
 
+
+        Integer num1 = 1234;
+        Integer num2 = 1234;
+        System.out.println(num1.equals(num2));
+
     }
 }

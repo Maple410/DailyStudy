@@ -16,4 +16,6 @@ package com.ws.leetcode;
  * 输出："bb"
  */
 public class MiddleAlgorithm_5 {
+
+
 }
