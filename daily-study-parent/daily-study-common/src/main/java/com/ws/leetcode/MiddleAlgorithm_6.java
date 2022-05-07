@@ -122,6 +122,6 @@ public class MiddleAlgorithm_6 {
 
     public static void main(String[] args) {
         //System.out.println(convert("PAYPALISHIRING", 3));
-        System.out.println(convertToZ("PAYPALISHIRING", 3));
+        System.out.println(convertToZ("PAYPALISHIRING", 4));
     }
 }
