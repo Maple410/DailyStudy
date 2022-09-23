@@ -2,8 +2,7 @@ package com.ws.excel.exportor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -320,6 +319,64 @@ public class DownLoadUtil {
         } catch (Exception e) {
             log.error("Excel导出失败：", e);
         }
+    }
+
+    /**
+     * 导出Excel  支持设置字体等
+     *
+     * @param excelParam
+     */
+    public static void exportTailorMadeExcel(ExcelParam excelParam) {
+        List<String> headerList = excelParam.getHeaders();
+        List<Map<String, String>> list = excelParam.getDataMapSets();
+        OutputStream out = excelParam.getOut();
+
+        HSSFWorkbook wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet(excelParam.getSheetName());
+        HSSFRow row = sheet.createRow(0);
+        //冻结首行
+        sheet.createFreezePane(0, 1, 0, 1);
+        // 表头
+        HSSFCellStyle headerStyle = wb.createCellStyle();
+        headerStyle.setAlignment(HorizontalAlignment.CENTER);
+        Font headerFont = wb.createFont();
+        headerFont.setFontHeightInPoints((short) 12);
+        headerFont.setFontName("黑体");
+        headerStyle.setFont(headerFont);
+        //内容
+        HSSFCellStyle contentStyle = wb.createCellStyle();
+        contentStyle.setAlignment(HorizontalAlignment.CENTER);
+        Font contentFont = wb.createFont();
+        contentFont.setFontHeightInPoints((short) 12);
+        contentStyle.setFont(contentFont);
+        HSSFCell cell;
+        for (int i = 0; i < headerList.size(); i++) {
+            cell = row.createCell(i);
+            sheet.setColumnWidth(i, 5000);
+            cell.setCellValue(headerList.get(i));
+            cell.setCellStyle(headerStyle);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            row = sheet.createRow(i + 1);
+
+            Map<String, String> map = list.get(i);
+            Iterator<Map.Entry<String, String>> entryIterator = map.entrySet().iterator();
+            int num = 0;
+            while (entryIterator.hasNext()) {
+                Map.Entry<String, String> entry = entryIterator.next();
+                Cell currentCell = row.createCell(num);
+                currentCell.setCellValue(entry.getValue());
+                currentCell.setCellStyle(contentStyle);
+                num++;
+            }
+        }
+
+        try {
+            wb.write(out);
+        } catch (IOException e) {
+            log.error("导出Excel失败:{},{}", e, e.getMessage());
+        }
+
     }
 
 }
