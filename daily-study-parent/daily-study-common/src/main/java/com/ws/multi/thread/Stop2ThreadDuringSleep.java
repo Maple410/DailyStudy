@@ -4,7 +4,7 @@ package com.ws.multi.thread;
  * @Author: wangshuo
  * @Date: 2022/5/7 15:22
  */
-public class ThreadStopDuringSleep {
+public class Stop2ThreadDuringSleep {
 
     public static void main(String[] args) throws InterruptedException{
 

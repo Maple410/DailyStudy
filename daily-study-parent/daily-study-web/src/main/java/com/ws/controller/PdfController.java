@@ -4,9 +4,7 @@ import com.ws.domains.AjaxResult;
 import com.ws.pdf.service.IPdfService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,5 +32,11 @@ public class PdfController {
     public void exportPdfZip(HttpServletResponse response) throws Exception{
         pdfService.exportPdfZip(response);
     }
+    @GetMapping("/previewPdf")
+    @ApiOperation(value = "PDF预览")
+    public void previewPdf(@RequestParam("fileUrl") String fileUrl, HttpServletResponse response) throws Exception {
+        pdfService.previewPdf(fileUrl, response);
+    }
+
 
 }

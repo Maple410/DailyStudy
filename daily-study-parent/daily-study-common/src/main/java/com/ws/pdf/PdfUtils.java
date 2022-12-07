@@ -9,10 +9,8 @@ import org.apache.poi.util.IOUtils;
 import org.springframework.core.io.ClassPathResource;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +25,14 @@ import java.util.zip.ZipOutputStream;
 public class PdfUtils {
 
 
-
+    /**
+     * https://juejin.cn/post/7033337499376484359
+     * https://blog.csdn.net/L28298129/article/details/118732743
+     * @param fileName
+     * @param resultMap
+     * @param response
+     * @throws Exception
+     */
     public static void exportPdf(String fileName, Map<String,String> resultMap, HttpServletResponse response) throws Exception{
         // 生成导出PDF的文件名称
         fileName = URLEncoder.encode(fileName, "UTF-8");
@@ -113,6 +118,15 @@ public class PdfUtils {
         }
     }
 
+    /**
+     * https://blog.csdn.net/qq_36323075/article/details/97628511
+     * https://blog.csdn.net/weixin_42116127/article/details/122140424
+     * @param list
+     * @param zipName
+     * @param templateName
+     * @param response
+     * @throws Exception
+     */
     public static void exportPdfZip(List<Map<String, String>> list, String zipName, String templateName, HttpServletResponse response) throws Exception {
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -152,6 +166,38 @@ public class PdfUtils {
         response.addHeader("Content-Length", "" + outputStream.toByteArray().length);
         response.setContentType("application/octet-stream; charset=UTF-8");
         IOUtils.copy(new ByteArrayInputStream(outputStream.toByteArray()), response.getOutputStream());
+    }
+
+    public static void previewPdf(String fileUrl, HttpServletResponse response) throws Exception{
+
+        URL file = null;
+        InputStream inputStream = null;
+        String codedFileName = null;
+        try {
+            codedFileName = URLEncoder.encode("测试" + ".pdf", "UTF-8");
+            file = new URL(fileUrl);
+            inputStream = new BufferedInputStream(file.openStream());
+            BufferedInputStream br = new BufferedInputStream(inputStream);
+            byte[] bs = new byte[1024];
+            int len = 0;
+            response.reset();
+            URL u = new URL("file:///" + fileUrl);
+            String contentType = u.openConnection().getContentType();
+            response.setContentType(contentType);
+            response.setHeader("Content-Disposition", "inline;filename="
+                    + codedFileName);
+            // 文件名应该编码成utf-8，注意：使用时，我们可忽略这句
+            OutputStream out = response.getOutputStream();
+            while ((len = br.read(bs)) > 0) {
+                out.write(bs, 0, len);
+            }
+            out.flush();
+            out.close();
+            br.close();
+        } catch (Exception e) {
+            log.info("预览pdf失败");
+        }
+
     }
 
 }

@@ -11,4 +11,6 @@ public interface IPdfService {
     void exportPdf(HttpServletResponse response) throws Exception;
 
     void exportPdfZip(HttpServletResponse response) throws Exception;
+
+    void previewPdf( String fileUrl, HttpServletResponse response) throws Exception;
 }

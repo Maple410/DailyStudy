@@ -2,9 +2,15 @@ package com.ws.pdf.service.impl;
 
 import com.ws.pdf.PdfUtils;
 import com.ws.pdf.service.IPdfService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -12,6 +18,7 @@ import java.util.*;
  * @Date: 2022/11/4 16:11
  */
 @Service
+@Slf4j
 public class PdfServiceImpl implements IPdfService {
 
 
@@ -53,5 +60,14 @@ public class PdfServiceImpl implements IPdfService {
         String templateName = "resign.pdf";
         PdfUtils.exportPdfZip(list,fileName,templateName,response);
 
+    }
+
+
+    @Override
+    /**
+     * https://blog.csdn.net/qq_14853853/article/details/111173772
+     */
+    public void previewPdf(String fileUrl, HttpServletResponse response) throws Exception {
+        PdfUtils.previewPdf(fileUrl,response);
     }
 }

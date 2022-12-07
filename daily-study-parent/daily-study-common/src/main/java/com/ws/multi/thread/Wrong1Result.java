@@ -4,27 +4,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author: wangshuo
- * @Date: 2022/5/12 15:59
+ * @Date: 2022/11/28 15:46
+ *
+ * 三类线程安全问题（一）运行结果 错误
  */
-public class MultiThread {
+public class Wrong1Result {
 
-
-    //volatile static int i;
-
-   static AtomicInteger i = new AtomicInteger(0);
-
+    //volatile static int i;//非线程安全
+    volatile  static AtomicInteger i = new AtomicInteger(0);// 线程安全
     public static void main(String[] args) throws InterruptedException {
         Runnable r = new Runnable() {
             @Override
             public void run() {
-
-                for (int j = 0; j < 1000000; j++) {
-                    i.getAndIncrement();
+                for (int j = 0; j < 100000000; j++) {
                     //i++;
+                    i.getAndAdd(1);
                 }
             }
         };
-
         Thread thread1 = new Thread(r);
         thread1.start();
         Thread thread2 = new Thread(r);
@@ -34,4 +31,5 @@ public class MultiThread {
         System.out.println(i);
 
     }
+
 }
