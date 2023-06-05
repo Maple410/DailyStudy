@@ -5,6 +5,7 @@ import com.ws.excel.exportor.vo.UserInfoExport;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author: wangshuo
@@ -66,6 +67,28 @@ public class TestLambda {
         nameList.forEach(item -> {
             System.out.println(item);
         });
+
+        // reduce 聚合函数
+        System.out.println("给定个初始值，求和");
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(100, (sum, item) -> sum + item));
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(100, Integer::sum));
+        System.out.println("给定个初始值，求min");
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(100, (min, item) -> Math.min(min, item)));
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(100, Integer::min));
+        System.out.println("给定个初始值，求max");
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(100, (max, item) -> Math.max(max, item)));
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(100, Integer::max));
+
+        System.out.println("无初始值，求和");
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(Integer::sum).orElse(0));
+        System.out.println("无初始值，求max");
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(Integer::max).orElse(0));
+        System.out.println("无初始值，求min");
+        System.out.println(Stream.of(1, 2, 3, 4).reduce(Integer::min).orElse(0));
+
+        System.out.println( Arrays.stream(new int[]{1,2,3,4,3,2,1}).reduce((a,b)->a^b).getAsInt());
+        System.out.println(Stream.of(1,2,3,2,3).reduce((a,b) ->a^b).orElse(0));
+
 
     }
 }
