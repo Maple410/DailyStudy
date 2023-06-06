@@ -1,4 +1,4 @@
-package com.ws.leetcode;
+package com.ws.leetcode.submitted;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
