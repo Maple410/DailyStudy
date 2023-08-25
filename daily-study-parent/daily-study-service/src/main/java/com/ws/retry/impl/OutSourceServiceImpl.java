@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeoutException;
 
 /**
  * @Author: wangshuo
