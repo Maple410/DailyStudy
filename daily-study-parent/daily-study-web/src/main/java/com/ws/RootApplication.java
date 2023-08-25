@@ -4,6 +4,7 @@ import com.dtflys.forest.springboot.annotation.ForestScan;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.retry.annotation.EnableRetry;
 
 /**
  * @Author: wangshuo
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan(value = "com.ws.service.mapper")
 @ForestScan("com.ws.forest")
+@EnableRetry
 public class RootApplication {
 
     public static void main(String[] args) {
