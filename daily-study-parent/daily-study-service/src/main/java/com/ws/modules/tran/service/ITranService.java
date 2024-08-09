@@ -11,4 +11,6 @@ public interface ITranService {
     void classInside();
 
     void catchException();
+
+    void manualRollBack();
 }

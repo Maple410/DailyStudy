@@ -7,6 +7,7 @@ import com.ws.service.entity.School;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 /**
  * @Author: wangshuo
@@ -53,6 +54,21 @@ public class TranServiceImpl implements ITranService {
             schoolService.save(new School(2, "江西", "二中"));
         } catch (RuntimeException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void manualRollBack() {
+        try {
+            boolean saveFlag = schoolService.save(new School(1, "手动回滚", "手动回滚"));
+            if (saveFlag) {
+                throw new RuntimeException();
+            }
+            schoolService.save(new School(2, "手动回滚1", "手动回滚1"));
+        } catch (RuntimeException e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
     }
 
